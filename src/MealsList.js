@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 
 // Components
-import AuthorCard from "./AuthorCard";
-import SearchBar from "./SearchBar";
+import MealCard from "./MealCard";
+//import SearchBar from "./SearchBar";
 
 import { connect } from "react-redux";
+import * as actionCreators from "./redux/actions/index";
 
-class AuthorsList extends Component {
+class MealsList extends Component {
+  componentDidMount() {}
+
   render() {
-    const authorCards = this.props.filteredAuthors.map(author => (
-      <AuthorCard key={author.id} author={author} />
+    const mealCards = this.props.meals.map(meal => (
+      <MealCard key={meal.id} meal={meal} />
     ));
 
     return (
-      <div className="authors">
-        <h3>Authors</h3>
-        <SearchBar />
-        <div className="row">{authorCards}</div>
+      <div>
+        <h3>Available Meals</h3>
+        <div className="row">{mealCards}</div>
       </div>
     );
   }
@@ -24,8 +26,17 @@ class AuthorsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    filteredAuthors: state.rootAuthors.filteredAuthors
+    meals: state.mealReducer.meals
   };
 };
 
-export default connect(mapStateToProps)(AuthorsList);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMeals: () => dispatch(actionCreators.fetchMeals())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MealsList);

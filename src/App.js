@@ -2,31 +2,31 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
 // Components
-// import Sidebar from "./Sidebar";
-// //import Loading from "./Loading";
-// import AuthorsList from "./AuthorsList";
-// import AuthorDetail from "./AuthorDetail";
+
 import Signup from "./SignupForm";
 import Login from "./LoginForm";
+
+import MealsList from "./MealsList";
+import MealDetail from "./MealDetail";
+import Loading from "./Loading";
+
+
 import { connect } from "react-redux";
-import * as actionCreators from "./store/actions/index";
+import * as actionCreators from "./redux/actions/index";
 
 class App extends Component {
-  componentDidMount() {
-    this.props.fetchAllAuthors();
-  }
-
   getView = () => {
     if (this.props.loading) {
       return <Loading />;
     } else {
       return (
         <Switch>
-          <Redirect exact from="/" to="/authors" />
-          <Route path="/authors/:authorID" component={AuthorDetail} />
-          <Route path="/authors/" component={AuthorsList} />
+
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path="/meals/:mealID" component={MealDetail} />
+          <Route path="/meals" component={MealsList} />
+          <Redirect from="/" to="/meals/" />
         </Switch>
       );
     }
@@ -36,9 +36,8 @@ class App extends Component {
     return (
       <div id="app" className="container-fluid">
         <div className="row">
-          <div className="col-2">
-            <Sidebar />
-          </div>
+          <div className="col-2"></div>
+
           <div className="content col-10">{this.getView()}</div>
         </div>
       </div>
@@ -48,20 +47,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    authors: state.rootAuthors.authors,
-    loading: state.rootAuthors.loading
+    meals: state.mealReducer.meals
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllAuthors: () => dispatch(actionCreators.fetchAuthors())
+    fetchMeals: () => dispatch(actionCreators.fetchMeals())
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter(connect(mapStateToProps)(App));
