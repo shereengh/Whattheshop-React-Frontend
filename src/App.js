@@ -10,9 +10,7 @@ import MealsList from "./MealsList";
 import MealDetail from "./MealDetail";
 import Loading from "./Loading";
 
-
 import { connect } from "react-redux";
-import * as actionCreators from "./redux/actions/index";
 
 class App extends Component {
   getView = () => {
@@ -21,7 +19,6 @@ class App extends Component {
     } else {
       return (
         <Switch>
-
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/meals/:mealID" component={MealDetail} />
@@ -48,12 +45,6 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     meals: state.mealReducer.meals
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchMeals: () => dispatch(actionCreators.fetchMeals())
   };
 };
 

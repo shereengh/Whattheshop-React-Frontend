@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 import mealReducer from "./meals";
 
-import authReducer from "./authentication";
+import authReducer from "./AuthReducer";
 
 const rootReducer = combineReducers({
   mealReducer: mealReducer,

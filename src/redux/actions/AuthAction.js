@@ -1,6 +1,6 @@
 import instance from "./instance";
 import { SET_CURRENT_USER } from "./actionTypes";
-import axios from "axios";
+
 import jwt_decode from "jwt-decode";
 
 export const login = (userData, history) => {
@@ -8,8 +8,10 @@ export const login = (userData, history) => {
     try {
       const res = await instance.post("/login/", userData);
       const user = res.data;
-      dispatch(setCurrentUser(user.token));
-      history.push("/");
+      let decodedUser = jwt_decode(user.token);
+      setAuthToken(user.token);
+      dispatch(setCurrentUser(decodedUser));
+      history.push("/meals");
 
       console.log(user);
     } catch (err) {
@@ -18,22 +20,19 @@ export const login = (userData, history) => {
   };
 };
 
-const setCurrentUser = token => {
-  let user;
+const setCurrentUser = user => ({
+  type: SET_CURRENT_USER,
+  payload: user
+});
+
+const setAuthToken = token => {
   if (token) {
     localStorage.setItem("token", token);
-    axios.defaults.headers.common.Authorization = `jwt ${token}`;
-    user = jwt_decode(token);
+    instance.defaults.headers.common.Authorization = `jwt ${token}`;
   } else {
     localStorage.removeItem("token");
-    delete axios.defaults.headers.common.Authorization;
-    user = null;
+    delete instance.defaults.headers.common.Authorization;
   }
-
-  return {
-    type: SET_CURRENT_USER,
-    payload: user
-  };
 };
 
 export const signup = (userData, history) => {
@@ -41,15 +40,20 @@ export const signup = (userData, history) => {
     try {
       const res = await instance.post("/signup/", userData);
       const user = res.data;
-      dispatch(setCurrentUser(user.token));
-      history.push("/");
+      let decodedUser = jwt_decode(user.token);
+      setAuthToken(user.token);
+      dispatch(setCurrentUser(decodedUser));
+      history.push("/meals");
     } catch (err) {
       console.error(err);
     }
   };
 };
 
-export const logout = () => setCurrentUser();
+export const logout = () => {
+  setAuthToken();
+  return setCurrentUser();
+};
 
 export const checkForExpiredToken = () => {
   return dispatch => {
@@ -65,7 +69,8 @@ export const checkForExpiredToken = () => {
       // Check token expiration
       if (user.exp >= currentTimeInSeconds) {
         // Set user
-        dispatch(setCurrentUser(token));
+        setAuthToken(token);
+        dispatch(setCurrentUser(user));
       } else {
         dispatch(logout());
       }

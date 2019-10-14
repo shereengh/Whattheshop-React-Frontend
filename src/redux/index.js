@@ -2,7 +2,7 @@ import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import reducer from "./reducers";
-import { checkForExpiredToken } from "./actions/authentication";
+import { checkForExpiredToken } from "./actions/AuthAction";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
