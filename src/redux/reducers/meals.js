@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_MEALS:
       return {
         ...state,
-        meals: state.meals.push(action.payload),
+        meals: state.meals.concat(action.payload),
         filteredMeals: state.filteredMeals.concat(action.payload),
         loading: false
       };
