@@ -4,6 +4,7 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 // Components
 
 import MealsList from "./MealsList";
+import MealDetail from "./MealDetail";
 import Loading from "./Loading";
 
 import { connect } from "react-redux";
@@ -16,9 +17,9 @@ class App extends Component {
     } else {
       return (
         <Switch>
-          {/* <Redirect exact from="/" to="/meals/list" /> */}
-          {/* <Route path="/authors/:authorID" component={AuthorDetail} /> */}
-          {/* <Route path="meals/list" component={MealsList} /> */}
+          <Route path="/meals/:mealID" component={MealDetail} />
+          <Route path="/meals" component={MealsList} />
+          <Redirect from="/" to="/meals/" />
         </Switch>
       );
     }
@@ -29,7 +30,7 @@ class App extends Component {
       <div id="app" className="container-fluid">
         <div className="row">
           <div className="col-2"></div>
-          <MealsList />
+
           <div className="content col-10">{this.getView()}</div>
         </div>
       </div>
@@ -49,7 +50,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default withRouter(connect(mapStateToProps)(App));
