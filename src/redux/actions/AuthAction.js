@@ -14,6 +14,7 @@ export const login = (userData, history) => {
       history.push("/meals");
 
       console.log(user);
+      auth;
     } catch (err) {
       console.error(err);
     }
