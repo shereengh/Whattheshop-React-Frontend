@@ -4,7 +4,7 @@ import instance from "./instance";
 
 export const fetchMeals = () => {
   return async dispatch => {
-    const res = await instance.get("meals/list/");
+    const res = await instance.get("meals/");
     const meals = res.data;
     dispatch({ type: actionTypes.FETCH_MEALS, payload: meals });
   };
