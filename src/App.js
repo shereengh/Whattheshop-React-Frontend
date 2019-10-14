@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
 // Components
-import Sidebar from "./Sidebar";
-import Loading from "./Loading";
-import AuthorsList from "./AuthorsList";
-import AuthorDetail from "./AuthorDetail";
-
+// import Sidebar from "./Sidebar";
+// //import Loading from "./Loading";
+// import AuthorsList from "./AuthorsList";
+// import AuthorDetail from "./AuthorDetail";
+import Signup from "./SignupForm";
+import Login from "./LoginForm";
 import { connect } from "react-redux";
 import * as actionCreators from "./store/actions/index";
 
@@ -24,6 +25,8 @@ class App extends Component {
           <Redirect exact from="/" to="/authors" />
           <Route path="/authors/:authorID" component={AuthorDetail} />
           <Route path="/authors/" component={AuthorsList} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
         </Switch>
       );
     }
