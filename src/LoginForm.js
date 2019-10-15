@@ -19,9 +19,10 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
+    console.log("username", this.props.user);
     if (this.props.user)
       return (
-        <div id="sidebar">
+        <div>
           <Redirect to="/" />;
         </div>
       );
@@ -69,12 +70,12 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  login: (userData, history) => dispatch(login(userData, history))
+const mapStateToProps = state => ({
+  user: state.user.user
 });
 
-const mapStateToProps = state => ({
-  user: state.user
+const mapDispatchToProps = dispatch => ({
+  login: (userData, history) => dispatch(login(userData, history))
 });
 
 export default connect(
