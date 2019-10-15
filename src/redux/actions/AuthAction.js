@@ -5,14 +5,10 @@ import jwt_decode from "jwt-decode";
 export const login = (userData, history) => {
   return async dispatch => {
     try {
-      const res = await instance.post("/login/", userData);
-      const user = res.data;
-      // let decodedUser = jwt_decode(user.token);
-      // setAuthToken(user.token);
-      dispatch(setCurrentUser(user.token));
+      const res = await instance.post("login/", userData);
+      const user = res.data.name;
+      dispatch(setCurrentUser(user.access));
       history.push("/meals");
-
-      console.log(user);
     } catch (err) {
       console.error(err);
     }
@@ -49,10 +45,8 @@ const setCurrentUser = token => {
 export const signup = (userData, history) => {
   return async dispatch => {
     try {
-      const res = await instance.post("/signup/", userData);
+      const res = await instance.post("register/", userData);
       const user = res.data;
-      // let decodedUser = jwt_decode(user.token);
-      // setAuthToken(user.token);
       dispatch(setCurrentUser(user.token));
       dispatch(login(userData));
       history.push("/meals");

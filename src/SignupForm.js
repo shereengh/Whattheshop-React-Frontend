@@ -19,10 +19,10 @@ class Signup extends Component {
   };
 
   render() {
-    const { username, email, password } = this.state;
+    const { username, password } = this.state;
     if (this.props.user)
       return (
-        <div id="sidebar">
+        <div>
           <Redirect to="/" />;
         </div>
       );
@@ -40,18 +40,6 @@ class Signup extends Component {
                   value={username}
                   name="username"
                   placeholder="Username"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  value={email}
-                  name="email"
-                  placeholder="Email"
                   onChange={this.handleChange}
                 />
               </div>
@@ -87,7 +75,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user.user
 });
 
 export default connect(
