@@ -2,6 +2,10 @@ import instance from "./instance";
 import { SET_CURRENT_USER } from "./actionTypes";
 import jwt_decode from "jwt-decode";
 
+/**
+ * Remove dead/commented code
+ */
+
 export const login = (userData, history) => {
   return async dispatch => {
     try {
@@ -46,6 +50,9 @@ export const signup = (userData, history) => {
   return async dispatch => {
     try {
       const res = await instance.post("register/", userData);
+      /**
+       * only one of these should be used
+       */
       const user = res.data;
       dispatch(setCurrentUser(user.token));
       dispatch(login(userData));

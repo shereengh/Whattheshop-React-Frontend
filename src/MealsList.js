@@ -7,6 +7,9 @@ import MealCard from "./MealCard";
 import { connect } from "react-redux";
 import * as actionCreators from "./redux/actions/index";
 
+/**
+ * This could be a functional component
+ */
 class MealsList extends Component {
   componentDidMount() {}
 
@@ -30,6 +33,9 @@ const mapStateToProps = state => {
   };
 };
 
+/**
+ * Dead code?
+ */
 const mapDispatchToProps = dispatch => {
   return {
     fetchMeals: () => dispatch(actionCreators.fetchMeals())

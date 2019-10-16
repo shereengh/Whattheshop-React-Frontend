@@ -3,6 +3,9 @@ import { Link, Redirect } from "react-router-dom";
 import { signup } from "./redux/actions/AuthAction";
 import { connect } from "react-redux";
 
+/**
+ * Same notes as LoginForm.js
+ */
 class Signup extends Component {
   state = {
     username: "",

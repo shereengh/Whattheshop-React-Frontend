@@ -16,6 +16,9 @@ const reducer = (state = initialState, action) => {
         loading: false
       };
 
+    /**
+     * Unused
+     */
     case actionTypes.FILTER_MEALS:
       return {
         ...state,
