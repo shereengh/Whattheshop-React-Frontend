@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Loading from "./Loading";
-
+import { Link, Redirect } from "react-router-dom";
 // Components
 
 //Actions
@@ -69,6 +69,9 @@ class MealDetail extends Component {
           <button onClick={() => this.props.addItemToCart(this.state)}>
             Add to Cart
           </button>
+          <Link to="/checkout" className="btn btn-link my-2 my-sm-0">
+                checkout
+              </Link>
         </div>
       );
     } else {

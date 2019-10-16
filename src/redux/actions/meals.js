@@ -30,3 +30,6 @@ export const removeItemFromCart = itemID => {
     payload: itemID
   };
 };
+export const checkoutCart = () => ({
+  type: actionTypes.CHECKOUT
+});

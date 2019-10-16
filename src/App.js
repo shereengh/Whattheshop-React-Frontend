@@ -11,6 +11,7 @@ import MealDetail from "./MealDetail";
 import Loading from "./Loading";
 
 import { connect } from "react-redux";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 
 class App extends Component {
   getView = () => {
@@ -24,6 +25,7 @@ class App extends Component {
           {/* dont forget logout */}
           <Route path="/meals/:mealID" component={MealDetail} />
           <Route path="/meals" component={MealsList} />
+          <Route path="/checkout" component={ShoppingCart} />
           <Redirect from="/" to="/meals/" />
         </Switch>
       );

@@ -26,10 +26,18 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.ADD_ITEM:
-      const newItem = action.payload;
+      let newMeal = action.payload;
+      let foundMeal = state.cart.find(meal=>meal.name===newMeal.name);
+      if(foundMeal){
+        foundMeal.quantity++;
+        return{
+          ...state,
+          cart: [...state.cart]
+        }
+      }
       return {
         ...state,
-        cart: [newItem].concat(state.cart)
+        cart: [newMeal].concat(state.cart)
       };
 
     case actionTypes.REMOVE_ITEM:
