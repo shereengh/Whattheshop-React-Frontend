@@ -11,6 +11,9 @@ import { fetchMeals } from "./redux/actions";
 
 import store from "./redux";
 
+/**
+ * Move this to redux/index.js
+ */
 store.dispatch(fetchMeals());
 
 ReactDOM.render(
@@ -21,4 +24,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-

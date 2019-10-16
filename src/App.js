@@ -14,20 +14,17 @@ import { connect } from "react-redux";
 
 class App extends Component {
   getView = () => {
-    if (this.props.loading) {
-      return <Loading />;
-    } else {
-      return (
-        <Switch>
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          {/* dont forget logout */}
-          <Route path="/meals/:mealID" component={MealDetail} />
-          <Route path="/meals" component={MealsList} />
-          <Redirect from="/" to="/meals/" />
-        </Switch>
-      );
-    }
+    if (this.props.loading) return <Loading />;
+    return (
+      <Switch>
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        {/* dont forget logout */}
+        <Route path="/meals/:mealID" component={MealDetail} />
+        <Route path="/meals" component={MealsList} />
+        <Redirect from="/" to="/meals/" />
+      </Switch>
+    );
   };
 
   render() {
@@ -35,7 +32,6 @@ class App extends Component {
       <div id="app" className="container-fluid">
         <div className="row">
           <div className="col-2"></div>
-
           <div className="content col-10">{this.getView()}</div>
         </div>
       </div>
@@ -43,6 +39,9 @@ class App extends Component {
   }
 }
 
+/**
+ * Remove "dead" code
+ */
 const mapStateToProps = state => {
   return {
     meals: state.mealReducer.meals

@@ -10,6 +10,9 @@ export const fetchMeals = () => {
   };
 };
 
+/**
+ * Being used?
+ */
 export const filterMeals = query => {
   return {
     type: actionTypes.FILTER_MEALS,

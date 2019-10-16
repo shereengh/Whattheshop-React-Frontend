@@ -7,6 +7,10 @@ import Loading from "./Loading";
 class MealDetail extends Component {
   render() {
     const mealID = this.props.match.params.mealID;
+
+    /**
+     * remove logs
+     */
     console.log("I'M HERE");
 
     const meal = this.props.meals.find(meal => meal.id == mealID);
@@ -39,5 +43,14 @@ const mapStateToProps = state => {
     meals: state.mealReducer.meals
   };
 };
+
+/**
+ * `ownProps` example
+ */
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     meal: state.mealReducer.meals.find(meal => meal.id === ownProps.match.params.mealID)
+//   };
+// };
 
 export default connect(mapStateToProps)(MealDetail);

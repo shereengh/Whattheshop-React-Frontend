@@ -3,6 +3,9 @@ import { Link, Redirect } from "react-router-dom";
 import { login } from "./redux/actions/AuthAction";
 import { connect } from "react-redux";
 
+/**
+ * Switch to functional component with useState?
+ */
 class Login extends Component {
   state = {
     username: "",
@@ -19,13 +22,11 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
+    /**
+     * Don't commit console logs
+     */
     console.log("username", this.props.user);
-    if (this.props.user)
-      return (
-        <div>
-          <Redirect to="/" />;
-        </div>
-      );
+    if (this.props.user) return <Redirect to="/" />;
     return (
       <div className="col-6 mx-auto">
         <div className="card my-5">

@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+/**
+ * Functional
+ */
 class MealCard extends Component {
   render() {
     const meal = this.props.meal;
+    /**
+     * Remove logs
+     */
     console.log("HERE", meal);
     return (
       <div className="col-lg-4 col-md-6 col-12">

@@ -1,5 +1,8 @@
 import { SET_CURRENT_USER } from "../actions/actionTypes";
 
+/**
+ * Simplify reducer state?
+ */
 const initialState = {
   user: null
 };
