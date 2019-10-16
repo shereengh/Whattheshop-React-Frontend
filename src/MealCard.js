@@ -6,31 +6,9 @@ import { connect } from "react-redux";
 import { addItemToCart } from "./redux/actions/meals";
 
 class MealCard extends Component {
-  // state = {
-  //   name: "",
-  //   price: 0,
-  //   quantity: 1
-  // };
 
-  // componentDidMount() {
-  //   const mealID = this.props.match.params.mealID;
-  //   const meal = this.props.meals.find(meal => meal.id == mealID);
-  //   if (meal) {
-  //     this.setState({ name: meal.name, price: meal.price });
-  //   }
-  // }
-
-  // componentDidUpdate(prevState) {
-  //   if (prevState.meals !== this.props.meals) {
-  //     const mealID = this.props.match.params.mealID;
-  //     const meal = this.props.meals.find(meal => meal.id == mealID);
-  //     if (meal) {
-  //       this.setState({ name: meal.name, price: meal.price });
-  //     }
-  //   }
-  // }
   render() {
-    //const mealID = this.props.match.params.mealID;
+
     const meal = this.props.meal;
     console.log("HERE", meal);
     return (
