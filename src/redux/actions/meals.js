@@ -16,3 +16,17 @@ export const filterMeals = query => {
     payload: query
   };
 };
+
+export const addItemToCart = item => {
+  return {
+    type: actionTypes.ADD_ITEM,
+    payload: item
+  };
+};
+
+export const removeItemFromCart = itemID => {
+  return {
+    type: actionTypes.REMOVE_ITEM,
+    payload: itemID
+  };
+};
