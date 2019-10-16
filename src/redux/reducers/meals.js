@@ -3,7 +3,8 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   meals: [],
   filteredMeals: [],
-  loading: true
+  loading: true,
+  cart: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +24,21 @@ const reducer = (state = initialState, action) => {
           return `${meal.name}`.toLowerCase().includes(action.payload);
         })
       };
+
+    case actionTypes.ADD_ITEM:
+      const newItem = action.payload;
+      return {
+        ...state,
+        cart: [newItem].concat(state.cart)
+      };
+
+    case actionTypes.REMOVE_ITEM:
+      const itemID = action.payload;
+      return {
+        ...state,
+        cart: state.cart.filter(item => item !== itemID)
+      };
+
     default:
       return state;
   }
