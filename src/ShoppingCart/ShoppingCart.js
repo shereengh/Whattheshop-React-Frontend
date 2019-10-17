@@ -5,7 +5,7 @@ import CartItem from "./CartItem";
 //import SearchBar from "./SearchBar";
 
 import { connect } from "react-redux";
-// import * as actionCreators from "./redux/actions/index";
+import {checkoutCart} from "../redux/actions/meals";
 
 
 class ShoppingCart extends Component {
@@ -35,6 +35,10 @@ Total = () => {
         <h3>Shopping Cart</h3>
         <div className="row">{cartItem}</div>
         <h3>Total Price: {this.Total()}</h3>
+        <h3>Total Number of Items:{this.props.counter}</h3>
+        <button onClick={() => this.props.checkoutCart()}>
+           CHECKOUT!!!!
+         </button>
       </div>
     );
   }
@@ -42,17 +46,16 @@ Total = () => {
 
 const mapStateToProps = state => {
   return {
-    cart: state.mealReducer.cart
+    cart: state.mealReducer.cart,
+    counter: state.mealReducer.counter
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchMeals: () => dispatch(fetchMeals())
-//   };
-// };
+const mapDispatchToProps = dispatch => ({
+  checkoutCart: () => dispatch(checkoutCart())
+ });
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps
+  mapDispatchToProps
 )(ShoppingCart);

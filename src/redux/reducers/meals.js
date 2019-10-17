@@ -4,7 +4,8 @@ const initialState = {
   meals: [],
   filteredMeals: [],
   loading: true,
-  cart: []
+  cart: [],
+  counter: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,24 +29,36 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ADD_ITEM:
       let newMeal = action.payload;
       let foundMeal = state.cart.find(meal=>meal.name===newMeal.name);
+      let counter1 = state.counter + 1;
       if(foundMeal){
         foundMeal.quantity++;
         return{
           ...state,
-          cart: [...state.cart]
+          cart: [...state.cart],
+          counter: counter1
         }
       }
       return {
         ...state,
-        cart: [newMeal].concat(state.cart)
+        cart: [newMeal].concat(state.cart),
+        counter: counter1
       };
 
     case actionTypes.REMOVE_ITEM:
       const itemID = action.payload;
+      let counter2 = state.counter-action.payload.quantity;
       return {
         ...state,
-        cart: state.cart.filter(item => item !== itemID)
+        cart: state.cart.filter(item => item !== itemID),
+        counter: counter2
       };
+
+      case actionTypes.CHECKOUT:
+        return {
+          ...state,
+          cart: [],
+          counter: 0
+        }; 
 
     default:
       return state;

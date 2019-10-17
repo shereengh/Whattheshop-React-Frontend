@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
-
+import {removeItemFromCart} from "../redux/actions/meals";
+import { connect } from "react-redux";
 
 class CartItem extends Component {
   render() {
@@ -18,7 +18,10 @@ class CartItem extends Component {
         <div>
           <img src={meal.img}></img>
         </div>
-      
+        <button onClick={() => this.props.removeItemFromCart(meal)}>
+            Remove
+          </button>
+          
           {/* <button transparent>
             <Icon name="trash" style={{ color: "white", fontSize: 21 }} />
           </button> */}
@@ -27,5 +30,7 @@ class CartItem extends Component {
     );
   }
 }
-
-export default CartItem;
+const mapDispatchToProps = dispatch => ({
+  removeItemFromCart: meal => dispatch(removeItemFromCart(meal))
+});
+export default connect(null,mapDispatchToProps)(CartItem);
