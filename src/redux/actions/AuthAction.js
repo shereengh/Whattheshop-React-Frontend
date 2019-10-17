@@ -6,7 +6,8 @@ export const login = (userData, history) => {
   return async dispatch => {
     try {
       const res = await instance.post("login/", userData);
-      const user = res.data.name;
+      const user = res.data;
+      console.log("user", user);
       dispatch(setCurrentUser(user.access));
       history.push("/meals");
     } catch (err) {
@@ -19,7 +20,7 @@ const setCurrentUser = token => {
   let user;
   if (token) {
     localStorage.setItem("token", token);
-    instance.defaults.headers.common.Authorization = `jwt ${token}`;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     user = jwt_decode(token);
   } else {
     localStorage.removeItem("token");
