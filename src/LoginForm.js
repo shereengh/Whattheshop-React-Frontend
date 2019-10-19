@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 class Login extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    redirect: false
   };
 
   handleChange = event =>
@@ -16,7 +17,17 @@ class Login extends Component {
     event.preventDefault();
     this.props.login(this.state, this.props.history);
   };
-
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect);
+    {
+      return <Redirect to="/meals" />;
+    }
+  };
   render() {
     const { username, password } = this.state;
     console.log("username", this.props.user);
@@ -52,7 +63,11 @@ class Login extends Component {
                 />
               </div>
 
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={this.setRedirect}
+              >
                 Login
               </button>
               <Link to="/signup" className="btn btn-link my-2 my-sm-0">
@@ -67,7 +82,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user.user
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({

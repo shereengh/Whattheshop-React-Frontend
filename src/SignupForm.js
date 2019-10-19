@@ -7,7 +7,8 @@ class Signup extends Component {
   state = {
     username: "",
     email: "",
-    password: ""
+    password: "",
+    redirect: false
   };
 
   handleChange = event =>
@@ -17,7 +18,17 @@ class Signup extends Component {
     event.preventDefault();
     this.props.signup(this.state, this.props.history);
   };
-
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect);
+    {
+      return <Redirect to="/meals" />;
+    }
+  };
   render() {
     const { username, password } = this.state;
     if (this.props.user)
@@ -56,7 +67,11 @@ class Signup extends Component {
                 />
               </div>
 
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={this.setRedirect}
+              >
                 Signup
               </button>
               <Link to="/login" className="btn btn-link my-2 my-sm-0">
@@ -75,7 +90,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  user: state.user.user
+  user: state.user
 });
 
 export default connect(
