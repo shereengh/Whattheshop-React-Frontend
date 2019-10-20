@@ -2,10 +2,9 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   meals: [],
-  filteredMeals: [],
   loading: true,
   cart: [],
-  counter: 0,
+  counter: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,29 +13,20 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         meals: action.payload,
-        filteredMeals: state.filteredMeals.concat(action.payload),
         loading: false
-      };
-
-    case actionTypes.FILTER_MEALS:
-      return {
-        ...state,
-        ffilteredMeals: state.filteredMeals.filter(meal => {
-          return `${meal.name}`.toLowerCase().includes(action.payload);
-        })
       };
 
     case actionTypes.ADD_ITEM:
       let newMeal = action.payload;
-      let foundMeal = state.cart.find(meal=>meal.name===newMeal.name);
+      let foundMeal = state.cart.find(meal => meal.name === newMeal.name);
       let counter1 = state.counter + 1;
-      if(foundMeal){
+      if (foundMeal) {
         foundMeal.quantity++;
-        return{
+        return {
           ...state,
           cart: [...state.cart],
           counter: counter1
-        }
+        };
       }
       return {
         ...state,
@@ -46,19 +36,19 @@ const reducer = (state = initialState, action) => {
 
     case actionTypes.REMOVE_ITEM:
       const itemID = action.payload;
-      let counter2 = state.counter-action.payload.quantity;
+      let counter2 = state.counter - action.payload.quantity;
       return {
         ...state,
         cart: state.cart.filter(item => item !== itemID),
         counter: counter2
       };
 
-      case actionTypes.CHECKOUT:
-        return {
-          ...state,
-          cart: [],
-          counter: 0
-        }; 
+    case actionTypes.CHECKOUT:
+      return {
+        ...state,
+        cart: [],
+        counter: 0
+      };
 
     default:
       return state;

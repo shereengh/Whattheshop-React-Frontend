@@ -10,13 +10,6 @@ export const fetchMeals = () => {
   };
 };
 
-export const filterMeals = query => {
-  return {
-    type: actionTypes.FILTER_MEALS,
-    payload: query
-  };
-};
-
 export const addItemToCart = item => {
   return {
     type: actionTypes.ADD_ITEM,
