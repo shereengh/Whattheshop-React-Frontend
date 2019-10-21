@@ -37,6 +37,7 @@ class Profile extends Component {
                 <span>{profile.contact} </span>
               </div>
             </div>
+
             <a
               href="#"
               className="btn btn-primary"

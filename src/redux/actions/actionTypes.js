@@ -6,3 +6,4 @@ export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const CHECKOUT = "CHECKOUT";
 export const FETCH_PROFILE = "FETCH_PROFILE";
+export const FETCH_ORDERS = "FETCH_ORDERS";

@@ -7,9 +7,7 @@ import { Link, Redirect } from "react-router-dom";
 import { addItemToCart } from "./redux/actions/meals";
 class MealDetail extends Component {
   state = {
-    name: "",
-    price: 0,
-    img: null,
+    meal: this.props.match.params.mealID,
     quantity: 1
   };
   handleAddItem = () => {
@@ -18,10 +16,12 @@ class MealDetail extends Component {
     };
     this.props.addItemToCart(Newmeal);
   };
+
   componentDidMount() {
     const mealID = this.props.match.params.mealID;
 
     const meal = this.props.meals.find(meal => meal.id == mealID);
+
     if (meal) {
       this.setState({ name: meal.name, price: meal.price, img: meal.img });
     }
@@ -35,6 +35,7 @@ class MealDetail extends Component {
       }
     }
   }
+
   render() {
     const mealID = this.props.match.params.mealID;
     const meal = this.props.meals.find(meal => meal.id == mealID);
@@ -54,9 +55,7 @@ class MealDetail extends Component {
             <small className="card-text">Price: {meal.price} KD</small>
             <p>{meal.description}</p>
           </div>
-          <button onClick={() => this.props.addItemToCart(this.state)}>
-            Add to Cart
-          </button>
+          <button onClick={this.handleAddItem}>Add to Cart</button>
           <Link to="/cart" className="btn btn-link my-2 my-sm-0">
             cart
           </Link>

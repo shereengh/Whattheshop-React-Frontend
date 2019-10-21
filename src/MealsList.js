@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "./redux/actions/index";
 
 class MealsList extends Component {
-  componentDidMount() {}
+  //componentDidMount() {}
 
   render() {
     const mealCards = this.props.meals.map(meal => (
