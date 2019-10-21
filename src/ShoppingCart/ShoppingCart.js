@@ -6,6 +6,7 @@ import CartItem from "./CartItem";
 
 import { connect } from "react-redux";
 import { checkoutCart } from "../redux/actions/meals";
+import { fetchOrders } from "../redux/actions/orders";
 
 class ShoppingCart extends Component {
   state = {
@@ -39,19 +40,23 @@ class ShoppingCart extends Component {
     if (!this.props.user) {
       this.props.history.push("/login");
     } else {
-      this.props.checkoutCart();
+      this.props.checkoutCart(this.props.cart);
+      this.props.fetchOrders();
     }
   };
 
   render() {
-    const cartItem = this.props.cart.map(meal => (
-      <CartItem key={meal.id} meal={meal} />
-    ));
-
+    let items = this.props.cart;
+    let cartItems;
+    if (items) {
+      cartItems = items.map((item, index) => (
+        <CartItem item={item} key={index} />
+      ));
+    }
     return (
       <div>
         <h3>Shopping Cart</h3>
-        <div className="row">{cartItem}</div>
+        <div className="row">{cartItems}</div>
         <h3>Total Price: {this.Total()}</h3>
         <h3>Total Number of Items:{this.props.counter}</h3>
         <button onClick={this.handleCheckout}>CHECKOUT!!!!</button>
@@ -64,12 +69,14 @@ const mapStateToProps = state => {
   return {
     cart: state.mealReducer.cart,
     counter: state.mealReducer.counter,
-    user: state.user
+    user: state.user,
+    orders: state.orders
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  checkoutCart: () => dispatch(checkoutCart())
+  checkoutCart: item => dispatch(checkoutCart(item)),
+  fetchOrders: () => dispatch(fetchOrders())
 });
 
 export default connect(
