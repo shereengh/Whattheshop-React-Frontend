@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { fetchProfile } from "./redux/actions/profile";
 //components
@@ -14,7 +15,20 @@ class Profile extends Component {
     if (this.props.loading) return <div>Loading</div>;
     const user = this.props.user;
     const profile = this.props.profile;
-    console.log("profile", profile);
+    const ordersList = profile.orders_list;
+
+    let orderHistory = [];
+    if (ordersList) {
+      ordersList.forEach(order => {
+        orderHistory.push(
+          <div>
+            <Link to={`/profile/${order.id}`} className="card">
+              <span>Order ID : {order.id}</span> <br></br>
+            </Link>
+          </div>
+        );
+      });
+    }
 
     return (
       <div>
@@ -48,6 +62,17 @@ class Profile extends Component {
             <a href="#" className="btn btn-primary">
               logout
             </a>
+          </div>
+        </div>
+
+        <div className="card" style={{ marginTop: "50px" }}>
+          <div className="card-body">
+            <h5 className="card-title">Orders History: </h5>
+            <div className="card-text">
+              <div>
+                <span style={{ fontWeight: "bold" }}>{orderHistory} </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
