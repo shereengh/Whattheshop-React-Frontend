@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log("action.payload", action.payload);
   switch (action.type) {
     case actionTypes.FETCH_PROFILE:
       return {

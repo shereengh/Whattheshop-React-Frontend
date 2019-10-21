@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Loading from "./Loading";
-// Components
-//Actions
+
 class OrderDetail extends Component {
   componentDidMount() {}
   componentDidUpdate(prevState) {
