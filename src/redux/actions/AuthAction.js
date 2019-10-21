@@ -7,7 +7,6 @@ export const login = (userData, history) => {
     try {
       const res = await instance.post("login/", userData);
       const user = res.data;
-      console.log("user", user);
       dispatch(setCurrentUser(user.access));
       history.push("/meals");
     } catch (err) {
@@ -33,16 +32,6 @@ const setCurrentUser = token => {
   };
 };
 
-// const setAuthToken = token => {
-//   if (token) {
-//     localStorage.setItem("token", token);
-//     instance.defaults.headers.common.Authorization = `jwt ${token}`;
-//   } else {
-//     localStorage.removeItem("token");
-//     delete instance.defaults.headers.common.Authorization;
-//   }
-// };
-
 export const signup = (userData, history) => {
   return async dispatch => {
     try {
@@ -58,30 +47,18 @@ export const signup = (userData, history) => {
 };
 
 export const logout = () => {
-  // setAuthToken();
   return setCurrentUser();
 };
 
 export const checkForExpiredToken = () => {
-  // return dispatch => {
-  // Check for token expiration
   const token = localStorage.getItem("token");
   let user = null;
   if (token) {
     const currentTimeInSeconds = Date.now() / 1000;
-    // Decode token and get user info
     user = jwt_decode(token);
-    // Check token expiration
     if (user.exp >= currentTimeInSeconds) {
-      // Set user
-      // setAuthToken(token);
-      // dispatch(setCurrentUser(user));
       return setCurrentUser(token);
     }
-    // else {
-    //   dispatch(logout());
-    // }
-    // }
   }
   return logout();
 };

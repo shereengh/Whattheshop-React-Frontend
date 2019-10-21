@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 // Components
 import CartItem from "./CartItem";
-//import SearchBar from "./SearchBar";
 
 import { connect } from "react-redux";
 import { checkoutCart } from "../redux/actions/meals";
@@ -12,11 +11,6 @@ class ShoppingCart extends Component {
   state = {
     redirect: false
   };
-  // totalprice(){
-  //   const total = this.props.cart.map(meal => {
-
-  //   })
-  // }
 
   Total = () => {
     const total = this.props.cart.reduce(

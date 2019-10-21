@@ -39,7 +39,6 @@ class MealDetail extends Component {
   render() {
     const mealID = this.props.match.params.mealID;
     const meal = this.props.meals.find(meal => meal.id == mealID);
-    console.log(meal);
     if (meal) {
       return (
         <div className="meal">

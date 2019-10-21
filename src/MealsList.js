@@ -2,14 +2,11 @@ import React, { Component } from "react";
 
 // Components
 import MealCard from "./MealCard";
-//import SearchBar from "./SearchBar";
 
 import { connect } from "react-redux";
 import * as actionCreators from "./redux/actions/index";
 
 class MealsList extends Component {
-  //componentDidMount() {}
-
   render() {
     const mealCards = this.props.meals.map(meal => (
       <MealCard key={meal.id} meal={meal} />
