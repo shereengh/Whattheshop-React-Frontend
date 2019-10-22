@@ -22,7 +22,7 @@ class App extends Component {
     if (this.props.loading) return <Loading />;
     return (
       <Switch>
-       <Route path="/home" component={HomePage} />
+        <Route path="/home" component={HomePage} />
         <Route path="/about" component={About} />
         <Route path="/story" component={Story} />
         <Route path="/signup" component={Signup} />
@@ -32,7 +32,7 @@ class App extends Component {
         <Route exact path="/profile" component={Profile} />
         <Route path="/cart" component={ShoppingCart} />
         <Route path="/profile/:orderID" component={orderDetail} />
-        <Redirect from="/" to="/meals/" />
+        <Redirect from="/" to="/home/" />
       </Switch>
     );
   };

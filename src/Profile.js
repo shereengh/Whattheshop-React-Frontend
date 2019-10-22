@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+// Actions :
 import { fetchProfile } from "./redux/actions/profile";
+import { logout } from "./redux/actions";
 
 import Default from "./icon.png";
-//components
 
 class Profile extends Component {
   componentDidMount() {
@@ -76,7 +77,11 @@ class Profile extends Component {
             >
               Edit my profile
             </a>
-            <a href="#" className="btn btn-primary">
+            <a
+              href="/logout"
+              className="btn btn-primary"
+              onClick={() => logout()}
+            >
               logout
             </a>
           </div>
@@ -102,9 +107,12 @@ const mapStateToProps = state => ({
   profile: state.profile.profile,
   loading: state.profile.loading
 });
+
 const mapDispatchToProps = dispatch => ({
-  fetchProfile: () => dispatch(fetchProfile())
+  fetchProfile: () => dispatch(fetchProfile()),
+  logout: () => dispatch(logout())
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
