@@ -49,11 +49,17 @@ class ShoppingCart extends Component {
     }
     return (
       <div>
-        <h3>Shopping Cart</h3>
-        <div className="row">{cartItems}</div>
-        <h3>Total Price: {this.Total()}</h3>
-        <h3>Total Number of Items:{this.props.counter}</h3>
-        <button onClick={this.handleCheckout}>CHECKOUT!!!!</button>
+        {cartItems.length ? (
+          <>
+            <h3>Shopping Cart</h3>
+            <div className="row">{cartItems}</div>
+            <h3>Total Price: {this.Total()}</h3>
+            <h3>Total Number of Items:{this.props.counter}</h3>
+            <button onClick={this.handleCheckout}>CHECKOUT!!!!</button>
+          </>
+        ) : (
+          <h1>Thank you for donating :*</h1>
+        )}
       </div>
     );
   }
