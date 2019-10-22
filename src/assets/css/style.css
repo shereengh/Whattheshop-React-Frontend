@@ -1,0 +1,154 @@
+.homepage {
+  background-image: url("../image/1.jpg");
+  background-size: 100%;
+  background-position: center center;
+  background: cover;
+  background-repeat: no-repeat;
+  height: 700px;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  mix-blend-mode: normal;
+  opacity: 0.85;
+}
+
+.login {
+  font-family: Impact;
+  color: rgba(255, 255, 255, 1);
+  font-size: 22px;
+  font-weight: 900;
+  font-style: normal;
+  text-decoration: none;
+  position: absolute;
+  left: 1220px;
+  top: 32px;
+  border-style: solid;
+  padding: 6px;
+  border-width: 2px;
+  border-radius: 30px;
+  color: white;
+}
+.login:hover {
+  border: underline;
+}
+
+.login:active {
+  color: #8aac8a;
+}
+.about {
+  font-family: Impact;
+  color: rgba(255, 255, 255, 1);
+  font-size: 22px;
+  font-weight: 900;
+  font-style: normal;
+  text-decoration: none;
+  position: absolute;
+  left: 300px;
+  top: 40px;
+}
+.about:hover {
+  text-decoration: underline;
+}
+
+.about:active {
+  color: white;
+}
+.story {
+  font-family: Impact;
+  color: rgba(255, 255, 255, 1);
+  font-size: 22px;
+  font-weight: 900;
+  font-style: normal;
+  text-decoration: none;
+  position: absolute;
+  left: 510px;
+  top: 40px;
+}
+.story:hover {
+  text-decoration: underline;
+}
+
+.story:active {
+  color: white;
+}
+.list {
+  font-family: Impact;
+  color: #a5baa5;
+  font-size: 22px;
+  font-weight: 900;
+  font-style: normal;
+  text-decoration: none;
+  text-shadow: 0.5px 0.5px #5c685c;
+  position: absolute;
+  left: 720px;
+  top: 40px;
+}
+.list:hover {
+  text-decoration: underline;
+}
+
+.list:active {
+  color: #a5baa5;
+}
+
+.rob {
+  position: absolute;
+  width: 734px;
+  height: 176px;
+  left: 450px;
+  top: 150px;
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 120px;
+  line-height: 119px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+.food {
+  position: absolute;
+  width: 734px;
+  height: 176px;
+  left: 750px;
+  top: 150px;
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 120px;
+  line-height: 119px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #a5baa5;
+}
+.qoute {
+  position: absolute;
+  width: 555px;
+  height: 49px;
+  left: 580px;
+  top: 480px;
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+.logo {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  left: 20px;
+  top: -15px;
+}
+
+#html {
+  margin-top: -22px;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-bottom: -40px;
+}

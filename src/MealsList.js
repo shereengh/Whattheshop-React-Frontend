@@ -13,8 +13,8 @@ class MealsList extends Component {
     ));
 
     return (
-      <div>
-        <h3>Available Meals</h3>
+      <div className="meals">
+        <h5 className="title">Available Meals</h5>
         <div className="row">{mealCards}</div>
       </div>
     );
