@@ -32,7 +32,7 @@ class App extends Component {
         <Route exact path="/profile" component={Profile} />
         <Route path="/cart" component={ShoppingCart} />
         <Route path="/profile/:orderID" component={orderDetail} />
-        <Redirect from="/" to="/meals/" />
+        <Redirect from="/" to="/home/" />
       </Switch>
     );
   };

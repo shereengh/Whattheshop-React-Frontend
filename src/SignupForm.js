@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 class Signup extends Component {
   state = {
     username: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
     redirect: false
@@ -18,17 +20,20 @@ class Signup extends Component {
     event.preventDefault();
     this.props.signup(this.state, this.props.history);
   };
+
   setRedirect = () => {
     this.setState({
       redirect: true
     });
   };
+
   renderRedirect = () => {
     if (this.state.redirect);
     {
       return <Redirect to="/meals" />;
     }
   };
+
   render() {
     const { username, password } = this.state;
     if (this.props.user)
@@ -38,7 +43,7 @@ class Signup extends Component {
         </div>
       );
     return (
-      <div className="col-6 mx-auto">
+      <div className="col-6 mx-auto" style={{ marginTop: "5%" }}>
         <div className="card my-5">
           <div className="card-body">
             <form onSubmit={this.handleSubmit}>
@@ -51,6 +56,42 @@ class Signup extends Component {
                   value={username}
                   name="username"
                   placeholder="Username"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="first_name">First Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="first_name"
+                  // value={first_name}
+                  name="first_name"
+                  placeholder="first name"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="last_name">Last Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  // value={last_name}
+                  name="last_name"
+                  placeholder="last name"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">e-mail</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="email"
+                  // value={email}
+                  name="email"
+                  placeholder="email"
                   onChange={this.handleChange}
                 />
               </div>

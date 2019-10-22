@@ -14,18 +14,21 @@ class MealCard extends Component {
     meal: this.props.meal.id,
     quantity: 1
   };
+
   handleAddItem = () => {
     const Newmeal = {
       ...this.state
     };
     this.props.addItemToCart(Newmeal);
   };
+
   componentDidMount() {
     const meal = this.props.meal;
     if (meal) {
       this.setState({ name: meal.name, price: meal.price, img: meal.img });
     }
   }
+
   componentDidUpdate(prevState) {
     if (prevState.meals !== this.props.meals) {
       const meal = this.props.meal;
@@ -34,6 +37,7 @@ class MealCard extends Component {
       }
     }
   }
+
   render() {
     const meal = this.props.meal;
     return (

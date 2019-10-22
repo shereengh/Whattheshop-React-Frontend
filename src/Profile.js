@@ -3,8 +3,11 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+// Actions :
 import { fetchProfile } from "./redux/actions/profile";
-//components
+import { logout } from "./redux/actions";
+
+import Default from "./icon.png";
 
 class Profile extends Component {
   componentDidMount() {
@@ -16,6 +19,9 @@ class Profile extends Component {
     const user = this.props.user;
     const profile = this.props.profile;
     const ordersList = profile.orders_list;
+
+    let image = profile.pic;
+    if (!image) image = Default;
 
     let orderHistory = [];
     if (ordersList) {
@@ -38,8 +44,20 @@ class Profile extends Component {
             <h5 className="card-title">info </h5>
             <div className="card-text">
               <div>
+                <div className="image">
+                  <img
+                    style={{
+                      borderRadius: "50%",
+                      width: "120px",
+                      height: "120px"
+                    }}
+                    className="card-img-top img-fluid"
+                    src={image}
+                    alt=""
+                  />
+                </div>
                 <span style={{ fontWeight: "bold" }}>Full Name: </span>
-                <span>{profile.firstname} </span>
+                <span>{profile.user.first_name} </span>
                 <span>{profile.user.last_name}</span>
               </div>
               <div>
@@ -59,7 +77,11 @@ class Profile extends Component {
             >
               Edit my profile
             </a>
-            <a href="#" className="btn btn-primary">
+            <a
+              href="/logout"
+              className="btn btn-primary"
+              onClick={() => logout()}
+            >
               logout
             </a>
           </div>
@@ -85,9 +107,12 @@ const mapStateToProps = state => ({
   profile: state.profile.profile,
   loading: state.profile.loading
 });
+
 const mapDispatchToProps = dispatch => ({
-  fetchProfile: () => dispatch(fetchProfile())
+  fetchProfile: () => dispatch(fetchProfile()),
+  logout: () => dispatch(logout())
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
