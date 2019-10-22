@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { fetchProfile } from "./redux/actions/profile";
+
+import Default from "./icon.png";
 //components
 
 class Profile extends Component {
@@ -16,6 +18,9 @@ class Profile extends Component {
     const user = this.props.user;
     const profile = this.props.profile;
     const ordersList = profile.orders_list;
+
+    let image = profile.pic;
+    if (!image) image = Default;
 
     let orderHistory = [];
     if (ordersList) {
@@ -38,8 +43,20 @@ class Profile extends Component {
             <h5 className="card-title">info </h5>
             <div className="card-text">
               <div>
+                <div className="image">
+                  <img
+                    style={{
+                      borderRadius: "50%",
+                      width: "120px",
+                      height: "120px"
+                    }}
+                    className="card-img-top img-fluid"
+                    src={image}
+                    alt=""
+                  />
+                </div>
                 <span style={{ fontWeight: "bold" }}>Full Name: </span>
-                <span>{profile.firstname} </span>
+                <span>{profile.user.first_name} </span>
                 <span>{profile.user.last_name}</span>
               </div>
               <div>
