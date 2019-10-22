@@ -22,7 +22,7 @@ class App extends Component {
     if (this.props.loading) return <Loading />;
     return (
       <Switch>
-       <Route path="/home" component={HomePage} />
+        <Route path="/home" component={HomePage} />
         <Route path="/about" component={About} />
         <Route path="/story" component={Story} />
         <Route path="/signup" component={Signup} />
@@ -43,7 +43,7 @@ class App extends Component {
         <div className="row">
           <div className="col-2"></div>
 
-          <div className="content col-10">{this.getView()}</div>
+          <div className="content col-12">{this.getView()}</div>
         </div>
       </div>
     );
