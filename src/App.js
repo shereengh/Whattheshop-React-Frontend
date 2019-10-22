@@ -12,30 +12,29 @@ import MealsList from "./MealsList";
 import MealDetail from "./MealDetail";
 import Loading from "./Loading";
 import HomePage from "./HomePage";
-
+import Profile from "./Profile";
+import orderDetail from "./orderDetail";
 import { connect } from "react-redux";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 
 class App extends Component {
   getView = () => {
-    if (this.props.loading) {
-      return <Loading />;
-    } else {
-      return (
-        <Switch>
-          <Route path="/home" component={HomePage} />
-          <Route path="/about" component={About} />
-          <Route path="/story" component={Story} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          {/* dont forget logout */}
-          <Route path="/meals/:mealID" component={MealDetail} />
-          <Route path="/meals" component={MealsList} />
-          <Route path="/cart" component={ShoppingCart} />
-          <Redirect from="/" to="/meals/" />
-        </Switch>
-      );
-    }
+    if (this.props.loading) return <Loading />;
+    return (
+      <Switch>
+       <Route path="/home" component={HomePage} />
+        <Route path="/about" component={About} />
+        <Route path="/story" component={Story} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/meals/:mealID" component={MealDetail} />
+        <Route path="/meals" component={MealsList} />
+        <Route exact path="/profile" component={Profile} />
+        <Route path="/cart" component={ShoppingCart} />
+        <Route path="/profile/:orderID" component={orderDetail} />
+        <Redirect from="/" to="/meals/" />
+      </Switch>
+    );
   };
 
   render() {

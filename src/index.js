@@ -11,8 +11,6 @@ import { fetchMeals } from "./redux/actions";
 
 import store from "./redux";
 
-store.dispatch(fetchMeals());
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
@@ -21,4 +19,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-

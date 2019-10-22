@@ -10,13 +10,6 @@ export const fetchMeals = () => {
   };
 };
 
-export const filterMeals = query => {
-  return {
-    type: actionTypes.FILTER_MEALS,
-    payload: query
-  };
-};
-
 export const addItemToCart = item => {
   return {
     type: actionTypes.ADD_ITEM,
@@ -30,6 +23,15 @@ export const removeItemFromCart = itemID => {
     payload: itemID
   };
 };
-export const checkoutCart = () => ({
-  type: actionTypes.CHECKOUT
-});
+export const checkoutCart = items => {
+  return async dispatch => {
+    try {
+      let response = await instance.post("checkout/", items);
+      dispatch({
+        type: actionTypes.CHECKOUT
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
