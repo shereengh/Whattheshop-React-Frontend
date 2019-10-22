@@ -43,7 +43,7 @@ class App extends Component {
         <div className="row">
           <div className="col-2"></div>
 
-          <div className="content col-10">{this.getView()}</div>
+          <div className="content col-12">{this.getView()}</div>
         </div>
       </div>
     );

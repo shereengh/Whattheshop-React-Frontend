@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-
+import { Redirect } from "react-router-dom";
+import { Icon, InlineIcon } from "@iconify/react";
+import shoppingCartOutline from "@iconify/icons-ant-design/shopping-cart-outline";
 // Components
 import MealCard from "./MealCard";
 import SearchBar from "./SearchBar";
@@ -9,7 +11,8 @@ import * as actionCreators from "./redux/actions/index";
 
 class MealsList extends Component {
   state = {
-    filteredMeals: []
+    filteredMeals: [],
+    redirect: false
   };
 
   componentDidMount = async () => {
@@ -26,6 +29,17 @@ class MealsList extends Component {
     });
     this.setState({ filteredMeals: filteredMeals });
   };
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect);
+    {
+      return <Redirect to="/cart" />;
+    }
+  };
   render() {
     const mealCards = this.state.filteredMeals.map(meal => (
       <MealCard key={meal.id} meal={meal} />
@@ -33,9 +47,16 @@ class MealsList extends Component {
 
     return (
       <div className="meals">
-        <h5 className="title">Available Meals</h5>
-        <SearchBar filter={this.filterMeals} />
+        <h5 className="title">CHOOSE A PACK</h5>
 
+        <div className="search">
+          <SearchBar filter={this.filterMeals} />
+        </div>
+        <Icon
+          className="shop"
+          icon={shoppingCartOutline}
+          onClick={this.setRedirect}
+        />
         <div className="row">{mealCards}</div>
       </div>
     );

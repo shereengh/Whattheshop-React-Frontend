@@ -28,7 +28,7 @@
   color: white;
 }
 .login:hover {
-  border: underline;
+  color: #a5baa5;
 }
 
 .login:active {
@@ -145,10 +145,109 @@
   left: 20px;
   top: -15px;
 }
+.qoute {
+  position: absolute;
+  width: 555px;
+  height: 49px;
+  left: 580px;
+  top: 480px;
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+.img {
+  position: relative;
+  width: 300px;
+  height: 250px;
+}
 
+.card-deck {
+  position: relative;
+  left: 290px;
+  top: 190px;
+}
+.meals {
+  background-color: #5c685c;
+  padding-bottom: 410px;
+  padding-right: 70px;
+  padding-left: 10px;
+}
+.jumbo {
+  position: relative;
+  right: 135px;
+  top: 30px;
+}
+.title {
+  position: absolute;
+  width: 555px;
+  height: 49px;
+  left: 570px;
+  top: 70px;
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+.search {
+  position: absolute;
+  width: 750px;
+  height: 49px;
+  left: 340px;
+  top: 130px;
+}
+.shop {
+  position: absolute;
+  width: 750px;
+  height: 49px;
+  left: 850px;
+  top: 70px;
+  color: white;
+}
+.lin {
+  text-decoration: none !important;
+}
 #html {
   margin-top: -22px;
   margin-left: -8px;
   margin-right: -8px;
   margin-bottom: -40px;
+}
+#mealcard {
+  height: 240px;
+  width: 200px;
+  padding: 10px;
+}
+#name {
+  font-family: Impact;
+  color: black;
+  font-size: 22px;
+  font-weight: 900;
+  font-style: normal;
+  text-decoration: none !important;
+}
+#name:hover {
+  color: #5c685c;
+  text-decoration: underline !important;
+}
+#btn {
+  color: #5c685c;
+  background-color: white;
+  border-color: #5c685c;
+  border-radius: 20px;
+}
+
+#btn:hover {
+  color: white;
+  background-color: #5c685c;
 }
