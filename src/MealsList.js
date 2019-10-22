@@ -32,9 +32,10 @@ class MealsList extends Component {
     ));
 
     return (
-      <div>
-        <h3>Available Meals</h3>
+      <div className="meals">
+        <h5 className="title">Available Meals</h5>
         <SearchBar filter={this.filterMeals} />
+
         <div className="row">{mealCards}</div>
       </div>
     );
