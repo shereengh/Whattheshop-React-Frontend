@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import "./assets/css/style.css";
 
 // Components
 
 import Signup from "./SignupForm";
 import Login from "./LoginForm";
-
+import About from "./About";
+import Story from "./Story";
 import MealsList from "./MealsList";
 import MealDetail from "./MealDetail";
 import Loading from "./Loading";
+import HomePage from "./HomePage";
 
 import { connect } from "react-redux";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
@@ -20,6 +23,9 @@ class App extends Component {
     } else {
       return (
         <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route path="/about" component={About} />
+          <Route path="/story" component={Story} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           {/* dont forget logout */}
