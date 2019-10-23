@@ -14,6 +14,13 @@ const reducer = (state = initialState, action) => {
         loading: false
       };
 
+    case actionTypes.UPDATE_PROFILE:
+      return {
+        ...state,
+        profile: action.payload,
+        loading: false
+      };
+
     default:
       return state;
   }

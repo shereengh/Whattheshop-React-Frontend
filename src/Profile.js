@@ -29,7 +29,10 @@ class Profile extends Component {
         orderHistory.push(
           <div>
             <Link to={`/profile/${order.id}`} className="card">
-              <span>Order ID : {order.id}</span> <br></br>
+              <span>
+                Order ID : {order.id} - Time : {order.timestamp}
+              </span>{" "}
+              <br></br>
             </Link>
           </div>
         );
@@ -70,13 +73,9 @@ class Profile extends Component {
               </div>
             </div>
 
-            <a
-              href="#"
-              className="btn btn-primary"
-              style={{ marginRight: "20px" }}
-            >
-              Edit my profile
-            </a>
+            <Link to={`/profileform`} className="card">
+              <span>Edit my profile</span>
+            </Link>
             <a
               href="/logout"
               className="btn btn-primary"

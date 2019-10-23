@@ -13,6 +13,7 @@ import MealDetail from "./MealDetail";
 import Loading from "./Loading";
 import HomePage from "./HomePage";
 import Profile from "./Profile";
+import ProfileForm from "./ProfileForm";
 import orderDetail from "./orderDetail";
 import { connect } from "react-redux";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
@@ -32,6 +33,7 @@ class App extends Component {
         <Route exact path="/profile" component={Profile} />
         <Route path="/cart" component={ShoppingCart} />
         <Route path="/profile/:orderID" component={orderDetail} />
+        <Route path="/profileform" component={ProfileForm} />
         <Redirect from="/" to="/home/" />
       </Switch>
     );
