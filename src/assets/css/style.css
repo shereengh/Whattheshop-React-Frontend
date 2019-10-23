@@ -10,7 +10,48 @@
   mix-blend-mode: normal;
   opacity: 0.85;
 }
-
+.conf {
+  background-image: url("../image/pag.jpg");
+  background-size: 100%;
+  background-position: center center;
+  background: cover;
+  background-repeat: no-repeat;
+  height: 700px;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  mix-blend-mode: normal;
+  opacity: 0.8;
+}
+.body {
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #5c685c;
+}
+.bod {
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  color: #8aac8a;
+}
+.message {
+  position: absolute;
+  width: 734px;
+  height: 176px;
+  left: 450px;
+  top: 150px;
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 90px;
+  line-height: 119px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
 .login {
   font-family: Impact;
   color: rgba(255, 255, 255, 1);
@@ -214,8 +255,40 @@
   top: 70px;
   color: white;
 }
+.car {
+  position: absolute;
+  width: 750px;
+  height: 49px;
+  left: 210px;
+  top: -120px;
+  color: white;
+}
 .lin {
   text-decoration: none !important;
+}
+.detailpage {
+  background-color: #5c685c;
+}
+.detail {
+  position: relative;
+  left: 700px;
+}
+.titled {
+  position: absolute;
+  width: 555px;
+  height: 49px;
+  left: 510px;
+  top: 30px;
+  align-content: center;
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
 }
 #html {
   margin-top: -22px;
@@ -250,4 +323,17 @@
 #btn:hover {
   color: white;
   background-color: #5c685c;
+}
+#btna {
+  color: #5c685c;
+  background-color: white;
+  border-color: #5c685c;
+  border-radius: 15px;
+}
+
+#btna:hover {
+  border-color: white;
+  color: white;
+  background-color: #5c685c;
+  border-radius: 15px;
 }
