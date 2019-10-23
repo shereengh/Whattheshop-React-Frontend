@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { login } from "./redux/actions/AuthAction";
 import { connect } from "react-redux";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 class Login extends Component {
   state = {
@@ -36,51 +39,49 @@ class Login extends Component {
     if (this.props.user) return <Redirect to="/meals" />;
 
     return (
-      <div className="my-4" style={{ marginTop: "5%" }}>
-        <div className="col-6 mx-auto">
-          <div className="card my-5">
-            <div className="card-body">
-              <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="username">Username</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="username"
-                    value={username}
-                    name="username"
-                    placeholder="Username"
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    value={password}
-                    name="password"
-                    placeholder="Password"
-                    onChange={this.handleChange}
-                  />
-                </div>
+      <Jumbotron id="p">
+        <Jumbotron className="jumbot">
+          <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+          />
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label htmlFor="username">Username</Form.Label>
+              <Form.Control
+                type="text"
+                className="form-control"
+                id="username"
+                value={username}
+                name="username"
+                placeholder="Username"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
 
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  onClick={this.setRedirect}
-                >
-                  Login
-                </button>
-                <Link to="/signup" className="btn btn-link my-2 my-sm-0">
-                  Signup for an account
-                </Link>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Control
+                type="password"
+                className="form-control"
+                id="password"
+                value={password}
+                name="password"
+                placeholder="Password"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Button type="submit" id="btn" onClick={this.setRedirect}>
+              Login
+            </Button>
+            <Link to="/signup" id="li" className="btn btn-link my-2 my-sm-0">
+              Signup for an account
+            </Link>
+          </Form>
+        </Jumbotron>
+      </Jumbotron>
     );
   }
 }
