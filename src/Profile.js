@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 
 // Actions :
 import { fetchProfile } from "./redux/actions/profile";
@@ -30,7 +31,7 @@ class Profile extends Component {
           <div>
             <Link to={`/profile/${order.id}`} className="card">
               <span>
-                Order ID : {order.id} - Time : {order.timestamp}
+                Order ID : {order.id}- Time : {order.timestamp}
               </span>{" "}
               <br></br>
             </Link>
@@ -40,63 +41,74 @@ class Profile extends Component {
     }
 
     return (
-      <div className="meals">
-        <div className="card" style={{ marginTop: "50px" }}>
-          <div className="title"> {user.name}'s Profile</div>
-          <div className="card-body">
-            <h5 className="card-title">info </h5>
-            <div className="card-text">
-              <div>
-                <div className="image">
-                  <img
-                    style={{
-                      borderRadius: "50%",
-                      width: "120px",
-                      height: "120px"
-                    }}
-                    className="card-img-top img-fluid"
-                    src={image}
-                    alt=""
-                  />
+      <Container className="profile">
+        <div>
+          <div className="card" style={{ marginTop: "50px" }}>
+            <div className="title"> {user.name}'s Profile</div>
+            <div className="card-body">
+              <div className="al">
+                <div className="card-text">
+                  <div>
+                    <div className="pimage">
+                      <img
+                        style={{
+                          borderRadius: "50%",
+                          width: "120px",
+                          height: "120px"
+                        }}
+                        className="card-img-top img-fluid"
+                        src={image}
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <span style={{ fontWeight: "bold" }}>Full Name: </span>
+                      <span>{profile.user.first_name} </span>
+                      <span>{profile.user.last_name}</span>
+                    </div>
+                    <div>
+                      <span style={{ fontWeight: "bold" }}>Email: </span>
+                      <span>{profile.user.email} </span>
+                    </div>
+                    <div>
+                      <span style={{ fontWeight: "bold" }}>Phone Number: </span>
+                      <span>{profile.contact} </span>
+                    </div>
+                  </div>
+
+                  <a
+                    href="#"
+                    className="btn btn-primary"
+                    style={{ marginRight: "20px" }}
+                  >
+                    Edit my profile
+                  </a>
+                  <a
+                    href="/logout"
+                    className="btn btn-primary"
+                    onClick={() => logout()}
+                  >
+                    logout
+                  </a>
                 </div>
-                <span style={{ fontWeight: "bold" }}>Full Name: </span>
-                <span>{profile.user.first_name} </span>
-                <span>{profile.user.last_name}</span>
-              </div>
-              <div>
-                <span style={{ fontWeight: "bold" }}>Email: </span>
-                <span>{profile.user.email} </span>
-              </div>
-              <div>
-                <span style={{ fontWeight: "bold" }}>Phone Number: </span>
-                <span>{profile.contact} </span>
               </div>
             </div>
-
-            <Link to={`/profileform`} className="card">
-              <span>Edit my profile</span>
-            </Link>
-            <a
-              href="/logout"
-              className="btn btn-primary"
-              onClick={() => logout()}
-            >
-              logout
-            </a>
           </div>
-        </div>
 
-        <div className="card" style={{ marginTop: "50px" }}>
-          <div className="card-body">
-            <h5 className="card-title">Orders History: </h5>
-            <div className="card-text">
-              <div>
-                <span style={{ fontWeight: "bold" }}>{orderHistory} </span>
+          <div className="ol">
+            <div className="card" style={{ marginTop: "50px" }}>
+              <div className="card-body">
+                <h3 className="card-title">Orders History: </h3>
+                <div className="card-text">
+                  <div>
+                    <span style={{ fontWeight: "bold" }}>{orderHistory} </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }

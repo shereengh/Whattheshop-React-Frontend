@@ -42,6 +42,9 @@ class MealsList extends Component {
       return <Redirect to="/cart" />;
     }
   };
+  handlefiltera = () => {
+    this.filterMeals("");
+  };
   handlefilterh = () => {
     this.filterMeals("healthy");
   };
@@ -58,10 +61,19 @@ class MealsList extends Component {
 
     return (
       <div className="meals">
+        <Link to="/profile" className="profilelist btn-link my-2 my-sm-0">
+          PROFILE
+        </Link>
         <h5 className="title">CHOOSE A PACK</h5>
 
         <div className="search">
           <SearchBar filter={this.filterMeals} />
+          <div className="filter">
+            <button onClick={this.handlefiltera}>All</button>
+            <button onClick={this.handlefilterh}>Healthy</button>
+            <button onClick={this.handlefilterp}>Packages</button>
+            <button onClick={this.handlefiltert}>Traditional</button>
+          </div>
         </div>
 
         <Link to="/cart" className="btn btn-link my-2 my-sm-0">
@@ -70,19 +82,8 @@ class MealsList extends Component {
             icon={shoppingCartOutline}
             onClick={this.setRedirect}
           />
-
-        <Link to="/cart" className="checklist btn-link my-2 my-sm-0">
-          CHECKOUT
-        </Link>
-        <Link to="/profile" className="profilelist btn-link my-2 my-sm-0">
-          PROFILE
-
         </Link>
         <div className="row">{mealCards}</div>
-        <p>Filters:</p>
-        <button onClick={this.handlefilterh}>Healthy</button>
-        <button onClick={this.handlefilterp}>Packages</button>
-        <button onClick={this.handlefiltert}>Traditional</button>
       </div>
     );
   }
