@@ -79,8 +79,15 @@ class MealDetail extends Component {
                   >
                     Add to Cart
                   </Button>
-                  <Link to="/cart" className="check btn-link my-2 my-sm-0">
-                    CHECKOUT
+
+
+                  <Link to="/cart" className="btn btn-link my-2 my-sm-0">
+                    <Icon
+                      className="car"
+                      icon={shoppingCartOutline}
+                      onTouchTap={this.setRedirect}
+                    />
+
                   </Link>
                 </Card.Body>
               </Card>
