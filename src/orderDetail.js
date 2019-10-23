@@ -22,7 +22,7 @@ class OrderDetail extends Component {
     );
     const meals = order.mealorders.map(meal => (
       <div>
-        <h3>{meal.meal.name}</h3>
+        <h3>Meal:{meal.meal.name}</h3>
         <img
           src={meal.meal.img}
           className="img-thumbnail img-fluid"
@@ -31,12 +31,17 @@ class OrderDetail extends Component {
         <br></br>
         <br></br>
         <small className="card-text">Price: {meal.meal.price} KD</small>
-        <p>{meal.meal.description}</p>
+        <p>description: {meal.meal.description}</p>
+        <p>quantity: {meal.quantity}</p>
       </div>
     ));
 
     if (order) {
-      return <div className="meal">{meals}</div>;
+      return (
+        <div className="meal">
+          {meals} Total Price:{order.total}
+        </div>
+      );
     } else {
       return <Loading />;
     }
