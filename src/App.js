@@ -12,6 +12,7 @@ import MealsList from "./MealsList";
 import MealDetail from "./MealDetail";
 import Loading from "./Loading";
 import HomePage from "./HomePage";
+import ConfPage from "./ShoppingCart/ConfPage";
 import Profile from "./Profile";
 import ProfileForm from "./ProfileForm";
 import orderDetail from "./orderDetail";
@@ -27,6 +28,7 @@ class App extends Component {
         <Route path="/about" component={About} />
         <Route path="/story" component={Story} />
         <Route path="/signup" component={Signup} />
+        <Route path="/conf" component={ConfPage} />
         <Route path="/login" component={Login} />
         <Route path="/meals/:mealID" component={MealDetail} />
         <Route path="/meals" component={MealsList} />
@@ -45,7 +47,9 @@ class App extends Component {
         <div className="row">
           <div className="col-2"></div>
 
-          <div className="content col-12">{this.getView()}</div>
+          <div id="con" className="content col-12">
+            {this.getView()}
+          </div>
         </div>
       </div>
     );

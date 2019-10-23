@@ -6,8 +6,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import CardDeck from "react-bootstrap/CardDeck";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import { Icon, InlineIcon } from "@iconify/react";
-import shoppingCartOutline from "@iconify/icons-ant-design/shopping-cart-outline";
+
 // Components
 //Actions
 import { addItemToCart } from "./redux/actions/meals";
@@ -80,14 +79,16 @@ class MealDetail extends Component {
                   >
                     Add to Cart
                   </Button>
+
+
                   <Link to="/cart" className="btn btn-link my-2 my-sm-0">
-                    cart
+                    <Icon
+                      className="car"
+                      icon={shoppingCartOutline}
+                      onTouchTap={this.setRedirect}
+                    />
+
                   </Link>
-                  <Icon
-                    className="car"
-                    icon={shoppingCartOutline}
-                    onTouchTap={this.setRedirect}
-                  />
                 </Card.Body>
               </Card>
             </Jumbotron>

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
 import { Icon, InlineIcon } from "@iconify/react";
 import shoppingCartOutline from "@iconify/icons-ant-design/shopping-cart-outline";
+
 // Components
 import MealCard from "./MealCard";
 import SearchBar from "./SearchBar";
@@ -40,6 +42,15 @@ class MealsList extends Component {
       return <Redirect to="/cart" />;
     }
   };
+  handlefilterh = () => {
+    this.filterMeals("healthy");
+  };
+  handlefilterp = () => {
+    this.filterMeals("packages");
+  };
+  handlefiltert = () => {
+    this.filterMeals("traditional");
+  };
   render() {
     const mealCards = this.state.filteredMeals.map(meal => (
       <MealCard key={meal.id} meal={meal} />
@@ -52,12 +63,26 @@ class MealsList extends Component {
         <div className="search">
           <SearchBar filter={this.filterMeals} />
         </div>
-        <Icon
-          className="shop"
-          icon={shoppingCartOutline}
-          onClick={this.setRedirect}
-        />
+
+        <Link to="/cart" className="btn btn-link my-2 my-sm-0">
+          <Icon
+            className="shop"
+            icon={shoppingCartOutline}
+            onClick={this.setRedirect}
+          />
+
+        <Link to="/cart" className="checklist btn-link my-2 my-sm-0">
+          CHECKOUT
+        </Link>
+        <Link to="/profile" className="profilelist btn-link my-2 my-sm-0">
+          PROFILE
+
+        </Link>
         <div className="row">{mealCards}</div>
+        <p>Filters:</p>
+        <button onClick={this.handlefilterh}>Healthy</button>
+        <button onClick={this.handlefilterp}>Packages</button>
+        <button onClick={this.handlefiltert}>Traditional</button>
       </div>
     );
   }
