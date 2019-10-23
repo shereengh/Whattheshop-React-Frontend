@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import { Icon, InlineIcon } from "@iconify/react";
-import shoppingCartOutline from "@iconify/icons-ant-design/shopping-cart-outline";
+import { Link, Redirect } from "react-router-dom";
+
 // Components
 import MealCard from "./MealCard";
 import SearchBar from "./SearchBar";
@@ -52,11 +51,12 @@ class MealsList extends Component {
         <div className="search">
           <SearchBar filter={this.filterMeals} />
         </div>
-        <Icon
-          className="shop"
-          icon={shoppingCartOutline}
-          onClick={this.setRedirect}
-        />
+        <Link to="/cart" className="checklist btn-link my-2 my-sm-0">
+          CHECKOUT
+        </Link>
+        <Link to="/profile" className="profilelist btn-link my-2 my-sm-0">
+          PROFILE
+        </Link>
         <div className="row">{mealCards}</div>
       </div>
     );

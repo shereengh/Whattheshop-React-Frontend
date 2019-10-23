@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 // Components
 import CartItem from "./CartItem";
-
+import confpage from "./ConfPage";
 import { connect } from "react-redux";
 import { checkoutCart } from "../redux/actions/meals";
 import { fetchOrders } from "../redux/actions/orders";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import CardDeck from "react-bootstrap/CardDeck";
+import Button from "react-bootstrap/Button";
 
 class ShoppingCart extends Component {
   state = {
@@ -30,12 +33,19 @@ class ShoppingCart extends Component {
   };
 
   handleCheckout = () => {
-    // alert("hey")
     if (!this.props.user) {
       this.props.history.push("/login");
     } else {
-      this.props.checkoutCart(this.props.cart);
+      this.props.checkoutCart(this.props.cart, this.props.history);
       this.props.fetchOrders();
+      this.handleIt();
+    }
+  };
+
+  handleIt = () => {
+    if (this.props.fetchOrders());
+    {
+      return <Redirect to="/conf" />;
     }
   };
 
@@ -48,17 +58,33 @@ class ShoppingCart extends Component {
       ));
     }
     return (
-      <div>
+      <div className="shopcart">
         {cartItems.length ? (
-          <>
-            <h3>Shopping Cart</h3>
-            <div className="row">{cartItems}</div>
-            <h3>Total Price: {this.Total()}</h3>
-            <h3>Total Number of Items:{this.props.counter}</h3>
-            <button onClick={this.handleCheckout}>CHECKOUT</button>
-          </>
+          <CardDeck className="card-deck">
+            <Jumbotron className="y">
+              <link
+                rel="stylesheet"
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                crossorigin="anonymous"
+              />
+              <h5 id="title">Shopping Cart</h5>
+              <div className="row">{cartItems}</div>
+              <br></br>
+              <h3 className="body">Total Price: {this.Total()} KD</h3>
+              <h3 className="body">
+                Total Number of Items:{this.props.counter}
+              </h3>
+              <Button id="btna" onClick={this.handleCheckout}>
+                CHECKOUT
+              </Button>
+              <Link to="/meals" className="checked btn-link my-2 my-sm-0">
+                + ADD TO CART
+              </Link>
+            </Jumbotron>
+          </CardDeck>
         ) : (
-          <h1>Thank you for donating :*</h1>
+          <h1 className="thanks">THANK YOU FOR YOUR DONATION</h1>
         )}
       </div>
     );
