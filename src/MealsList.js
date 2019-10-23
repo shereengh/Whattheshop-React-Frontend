@@ -40,6 +40,15 @@ class MealsList extends Component {
       return <Redirect to="/cart" />;
     }
   };
+  handlefilterh = () => {
+    this.filterMeals("healthy");
+  };
+  handlefilterp = () => {
+    this.filterMeals("packages");
+  };
+  handlefiltert = () => {
+    this.filterMeals("traditional");
+  };
   render() {
     const mealCards = this.state.filteredMeals.map(meal => (
       <MealCard key={meal.id} meal={meal} />
@@ -58,6 +67,10 @@ class MealsList extends Component {
           onClick={this.setRedirect}
         />
         <div className="row">{mealCards}</div>
+        <p>Filters:</p>
+        <button onClick={this.handlefilterh}>Healthy</button>
+        <button onClick={this.handlefilterp}>Packages</button>
+        <button onClick={this.handlefiltert}>Traditional</button>
       </div>
     );
   }
