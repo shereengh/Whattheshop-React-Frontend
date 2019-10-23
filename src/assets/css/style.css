@@ -220,6 +220,14 @@
   padding-bottom: 410px;
   padding-right: 70px;
   padding-left: 10px;
+  align-items: center;
+}
+.profile {
+  background-color: #5c685c;
+  padding-bottom: 700px;
+  padding-right: 70px;
+  padding-left: 100px;
+  align-items: center;
 }
 .jumbo {
   position: relative;
@@ -230,7 +238,7 @@
   position: absolute;
   width: 555px;
   height: 49px;
-  left: 570px;
+  left: 620px;
   top: 70px;
   font-family: Impact;
   font-style: normal;
@@ -241,6 +249,30 @@
   align-items: center;
   text-align: center;
   color: #ffffff;
+}
+.pimage {
+  position: relative;
+  width: 555px;
+  height: 49px;
+  left: 40px;
+  top: -100px;
+  align-items: center;
+}
+.al {
+  position: relative;
+  width: 555px;
+  height: 49px;
+  left: 600px;
+  top: 250px;
+  align-items: center;
+}
+.ol {
+  position: relative;
+  width: 555px;
+  height: 49px;
+  left: 550px;
+  top: 400px;
+  align-items: center;
 }
 .search {
   position: absolute;
@@ -402,6 +434,9 @@
   position: absolute;
   left: 300px;
   top: 300px;
+}
+.filter {
+  align-items: center;
 }
 #li {
   color: #5c685c;
