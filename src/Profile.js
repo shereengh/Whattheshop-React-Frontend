@@ -39,7 +39,7 @@ class Profile extends Component {
     return (
       <div className="meals">
         <div className="card" style={{ marginTop: "50px" }}>
-          <div className="card-header"> {user.name}'s Profile</div>
+          <div className="title"> {user.name}'s Profile</div>
           <div className="card-body">
             <h5 className="card-title">info </h5>
             <div className="card-text">
