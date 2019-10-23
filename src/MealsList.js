@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Icon, InlineIcon } from "@iconify/react";
 import shoppingCartOutline from "@iconify/icons-ant-design/shopping-cart-outline";
 // Components
@@ -61,11 +61,13 @@ class MealsList extends Component {
         <div className="search">
           <SearchBar filter={this.filterMeals} />
         </div>
-        <Icon
-          className="shop"
-          icon={shoppingCartOutline}
-          onClick={this.setRedirect}
-        />
+        <Link to="/cart" className="btn btn-link my-2 my-sm-0">
+          <Icon
+            className="shop"
+            icon={shoppingCartOutline}
+            onClick={this.setRedirect}
+          />
+        </Link>
         <div className="row">{mealCards}</div>
         <p>Filters:</p>
         <button onClick={this.handlefilterh}>Healthy</button>
