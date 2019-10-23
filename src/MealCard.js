@@ -41,7 +41,7 @@ class MealCard extends Component {
   render() {
     const meal = this.props.meal;
     return (
-      <Link className="lin" to={`/meals/${meal.id}`}>
+      <div>
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -53,15 +53,23 @@ class MealCard extends Component {
           <Jumbotron className="jumbo">
             <div className="col-lg-4 col-md-6 col-12">
               <Card className="card" style={{ width: "18rem" }}>
-                <Card.Img
-                  className="img"
-                  variant="top"
-                  src={meal.img}
-                  alt={meal.name}
-                />
+                <Link className="lin" to={`/meals/${meal.id}`}>
+                  <Card.Img
+                    className="img"
+                    variant="top"
+                    src={meal.img}
+                    alt={meal.name}
+                  />
+                  <Card.Body>
+                    <Card.Title id="name">{meal.name}</Card.Title>
+                  </Card.Body>
+                  <Card.Body>
+                    <Card.Text className="bod">
+                      Price: {meal.price} KD
+                    </Card.Text>
+                  </Card.Body>
+                </Link>
                 <Card.Body>
-                  <Card.Title id="name">{meal.name}</Card.Title>
-
                   <Button
                     id="btn"
                     variant="primary"
@@ -74,7 +82,7 @@ class MealCard extends Component {
             </div>
           </Jumbotron>
         </CardDeck>
-      </Link>
+      </div>
     );
   }
 }

@@ -23,13 +23,14 @@ export const removeItemFromCart = itemID => {
     payload: itemID
   };
 };
-export const checkoutCart = items => {
+export const checkoutCart = (items, history) => {
   return async dispatch => {
     try {
       let response = await instance.post("checkout/", items);
       dispatch({
         type: actionTypes.CHECKOUT
       });
+      history.replace("/conf");
     } catch (error) {
       console.error(error);
     }

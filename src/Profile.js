@@ -37,7 +37,7 @@ class Profile extends Component {
     }
 
     return (
-      <div>
+      <div className="meals">
         <div className="card" style={{ marginTop: "50px" }}>
           <div className="card-header"> {user.name}'s Profile</div>
           <div className="card-body">
