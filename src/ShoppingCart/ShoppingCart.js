@@ -84,7 +84,13 @@ class ShoppingCart extends Component {
             </Jumbotron>
           </CardDeck>
         ) : (
-          <h1 className="thanks">THANK YOU FOR YOUR DONATION</h1>
+          <div>
+            <h1 className="thanks">THANK YOU FOR YOUR DONATION</h1>
+            <br></br>
+            <Link to="/meals" className="list btn-link back" type="button">
+              Click here to go back to meal's list
+            </Link>
+          </div>
         )}
       </div>
     );

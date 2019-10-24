@@ -93,6 +93,13 @@ class Profile extends Component {
                 Edit my profile
               </Link>
               <Link
+                to="/meals"
+                className="btn btn-link my-2 my-sm-0"
+                style={{ color: "#8aac8a" }}
+              >
+                List of meals
+              </Link>
+              <Link
                 to="/logout"
                 className="btn btn-link my-2 my-sm-0"
                 onClick={() => logout()}

@@ -60,6 +60,16 @@ class MealDetail extends Component {
     if (meal) {
       return (
         <div className="detailpage">
+          <div style={{ color: "black" }}>
+            <Link to="/cart" className="btn btn-link my-2 my-sm-0">
+              <div className="counter">{this.props.counter}</div>
+              <Icon
+                className="shop"
+                icon={shoppingCartOutline}
+                onClick={this.setRedirect}
+              />
+            </Link>
+          </div>
           <h5 className="titled">{meal.name}</h5>
           <CardDeck className="detail">
             <Jumbotron className="jumbo">
@@ -81,14 +91,6 @@ class MealDetail extends Component {
                   >
                     Add to Cart
                   </Button>
-
-                  <Link to="/cart" className="btn btn-link my-2 my-sm-0">
-                    <Icon
-                      className="car"
-                      icon={shoppingCartOutline}
-                      onTouchTap={this.setRedirect}
-                    />
-                  </Link>
                 </Card.Body>
               </Card>
             </Jumbotron>
@@ -103,7 +105,8 @@ class MealDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    meals: state.mealReducer.meals
+    meals: state.mealReducer.meals,
+    counter: state.mealReducer.counter
   };
 };
 const mapDispatchToProps = dispatch => ({
