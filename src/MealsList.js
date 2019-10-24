@@ -30,7 +30,10 @@ class MealsList extends Component {
   filterMeals = query => {
     query = query.toLowerCase();
     let filteredMeals = this.props.meals.filter(meal => {
-      return `${meal.name}`.toLowerCase().includes(query.toLowerCase());
+      return (
+        `${meal.name}`.toLowerCase().includes(query.toLowerCase()) ||
+        `${meal.description}`.toLowerCase().includes(query.toLowerCase())
+      );
     });
     this.setState({ filteredMeals: filteredMeals });
   };
@@ -49,13 +52,16 @@ class MealsList extends Component {
     this.filterMeals("");
   };
   handlefilterh = () => {
-    this.filterMeals("family");
+    this.filterMeals("healthy");
   };
   handlefilterp = () => {
-    this.filterMeals("packages");
+    this.filterMeals("package");
   };
   handlefiltert = () => {
     this.filterMeals("traditional");
+  };
+  handlefilterj = () => {
+    this.filterMeals("junk");
   };
   render() {
     const mealCards = this.state.filteredMeals.map(meal => (
@@ -91,10 +97,13 @@ class MealsList extends Component {
                 Healthy
               </Button>
               <Button variant="light" onClick={this.handlefilterp}>
-                Packages
+                Package
               </Button>
               <Button variant="light" onClick={this.handlefiltert}>
                 Traditional
+              </Button>
+              <Button variant="light" onClick={this.handlefilterj}>
+                Junk
               </Button>
             </ButtonGroup>
           </div>
