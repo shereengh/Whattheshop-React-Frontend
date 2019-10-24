@@ -76,7 +76,9 @@ class MealsList extends Component {
             </Link>
           </span>
         </div>
-        <h5 className="title">CHOOSE A PACK</h5>
+        <h5 id="soso" className="title">
+          CHOOSE A PACK
+        </h5>
 
         <div className="search">
           <SearchBar filter={this.filterMeals} />
