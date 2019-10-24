@@ -29,6 +29,25 @@
   font-size: 20px;
   color: #5c685c;
 }
+.bodyz {
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #5c685c;
+}
+.his {
+  font-family: Impact;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px !important;
+  color: #8aac8a !important;
+  text-decoration: none !important;
+}
+.his:hover {
+  text-decoration: underline !important;
+  color: #8aac8a !important;
+}
 .bod {
   font-family: Impact;
   font-style: normal;
@@ -75,6 +94,7 @@
 .login:active {
   color: #8aac8a;
 }
+
 .about {
   font-family: Impact;
   color: rgba(255, 255, 255, 1);
@@ -225,8 +245,8 @@
 .profile {
   background-color: #5c685c;
   padding-bottom: 700px;
-  padding-right: 70px;
-  padding-left: 100px;
+  padding-right: 100px;
+  padding-left: 200px;
   align-items: center;
 }
 .jumbo {

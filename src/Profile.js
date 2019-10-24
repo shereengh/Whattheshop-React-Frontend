@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import CardDeck from "react-bootstrap/CardDeck";
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 // Actions :
 import { fetchProfile } from "./redux/actions/profile";
@@ -30,7 +34,7 @@ class Profile extends Component {
         orderHistory.push(
           <div>
             <Link to={`/profile/${order.id}`} className="card">
-              <span>
+              <span className="his">
                 Order ID : {order.id}- Time : {order.timestamp}
               </span>{" "}
               <br></br>
@@ -41,74 +45,80 @@ class Profile extends Component {
     }
 
     return (
-      <Container className="profile">
-        <div>
-          <div className="card" style={{ marginTop: "50px" }}>
-            <div className="title"> {user.name}'s Profile</div>
-            <div className="card-body">
-              <div className="al">
-                <div className="card-text">
-                  <div>
-                    <div className="pimage">
-                      <img
-                        style={{
-                          borderRadius: "50%",
-                          width: "120px",
-                          height: "120px"
-                        }}
-                        className="card-img-top img-fluid"
-                        src={image}
-                        alt=""
-                      />
-                    </div>
-                    <div>
-                      <span style={{ fontWeight: "bold" }}>Full Name: </span>
-                      <span>{profile.user.first_name} </span>
-                      <span>{profile.user.last_name}</span>
-                    </div>
-                    <div>
-                      <span style={{ fontWeight: "bold" }}>Email: </span>
-                      <span>{profile.user.email} </span>
-                    </div>
-                    <div>
-                      <span style={{ fontWeight: "bold" }}>Phone Number: </span>
-                      <span>{profile.contact} </span>
-                    </div>
-                  </div>
+      <>
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"
+        />
+        <Container className="profile">
+          <div className="title"> {user.name}'s Profile</div>
 
-                  <a
-                    href="#"
-                    className="btn btn-primary"
-                    style={{ marginRight: "20px" }}
-                  >
-                    Edit my profile
-                  </a>
-                  <a
-                    href="/logout"
-                    className="btn btn-primary"
-                    onClick={() => logout()}
-                  >
-                    logout
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Card
+            style={{
+              hight: "100rem",
+              width: "50rem",
+              position: "relative",
+              left: "160px",
+              top: "150px"
+            }}
+          >
+            <Card.Body>
+              <Card.Img
+                style={{
+                  borderRadius: "50%",
+                  width: "120px",
+                  height: "120px"
+                }}
+                className="img"
+                variant="top"
+                src={image}
+              ></Card.Img>
+              <Card.Text className="bodyz">
+                Full Name: <span>{profile.user.first_name} </span>
+                <span>{profile.user.last_name}</span>
+              </Card.Text>
+              <Card.Text className="bodyz">
+                Email: {profile.user.email}
+              </Card.Text>
+              <Card.Text className="bodyz">
+                Phone Number: {profile.contact}
+              </Card.Text>
+              <Link
+                to="#"
+                className="btn btn-link my-2 my-sm-0"
+                style={{ marginRight: "20px", color: "#8aac8a" }}
+              >
+                Edit my profile
+              </Link>
+              <Link
+                to="/logout"
+                className="btn btn-link my-2 my-sm-0"
+                onClick={() => logout()}
+                style={{ color: "#8aac8a" }}
+              >
+                logout
+              </Link>
 
-          <div className="ol">
-            <div className="card" style={{ marginTop: "50px" }}>
-              <div className="card-body">
-                <h3 className="card-title">Orders History: </h3>
-                <div className="card-text">
-                  <div>
-                    <span style={{ fontWeight: "bold" }}>{orderHistory} </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
+              <Card.Title className="bodyz">Orders History:</Card.Title>
+
+              <Card.Text
+                className="his"
+                style={{
+                  fontFamily: "Impact",
+                  fontStyle: "normal",
+                  fontWeight: "normal",
+                  fontSize: "20px",
+                  color: "#8aac8a"
+                }}
+              >
+                {orderHistory}{" "}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Container>
+      </>
     );
   }
 }
