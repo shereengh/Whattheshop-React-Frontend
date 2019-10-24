@@ -46,7 +46,7 @@ class MealsList extends Component {
     this.filterMeals("");
   };
   handlefilterh = () => {
-    this.filterMeals("healthy");
+    this.filterMeals("family");
   };
   handlefilterp = () => {
     this.filterMeals("packages");
