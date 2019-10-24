@@ -254,6 +254,13 @@
   right: 135px;
   top: 30px;
 }
+#soso {
+  position: absolute;
+  width: 555px;
+  height: 49px;
+  left: 560px !important;
+  top: 70px;
+}
 .title {
   position: absolute;
   width: 555px;
@@ -312,7 +319,7 @@
   position: absolute;
   width: 750px;
   height: 49px;
-  left: 850px;
+  left: 800px;
   top: 70px;
   color: white;
 }
@@ -502,8 +509,9 @@
 .counter {
   color: white !important;
   position: absolute;
-  left: 100px;
-  top: 50px;
+  left: 1200px;
+  top: 100px;
+  font-size: 20px;
 }
 #li {
   color: #5c685c;
