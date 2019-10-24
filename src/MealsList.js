@@ -11,6 +11,9 @@ import SearchBar from "./SearchBar";
 import { connect } from "react-redux";
 import * as actionCreators from "./redux/actions/index";
 
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
+
 class MealsList extends Component {
   state = {
     filteredMeals: [],
@@ -61,28 +64,49 @@ class MealsList extends Component {
 
     return (
       <div className="meals">
-        <Link to="/profile" className="profilelist btn-link my-2 my-sm-0">
-          PROFILE
-        </Link>
+        <div>
+          <span style={{ padding: "10%" }}>
+            <Link to="/home" className="homeLink btn-link my-2 my-sm-0">
+              HOME
+            </Link>
+          </span>
+          <span style={{ padding: "10%" }}>
+            <Link to="/profile" className="profilelist btn-link my-2 my-sm-0">
+              PROFILE
+            </Link>
+          </span>
+        </div>
         <h5 className="title">CHOOSE A PACK</h5>
 
         <div className="search">
           <SearchBar filter={this.filterMeals} />
           <div className="filter">
-            <button onClick={this.handlefiltera}>All</button>
-            <button onClick={this.handlefilterh}>Healthy</button>
-            <button onClick={this.handlefilterp}>Packages</button>
-            <button onClick={this.handlefiltert}>Traditional</button>
+            <ButtonGroup>
+              <Button variant="light" onClick={this.handlefiltera}>
+                All
+              </Button>
+              <Button variant="light" onClick={this.handlefilterh}>
+                Healthy
+              </Button>
+              <Button variant="light" onClick={this.handlefilterp}>
+                Packages
+              </Button>
+              <Button variant="light" onClick={this.handlefiltert}>
+                Traditional
+              </Button>
+            </ButtonGroup>
           </div>
         </div>
-
-        <Link to="/cart" className="btn btn-link my-2 my-sm-0">
-          <Icon
-            className="shop"
-            icon={shoppingCartOutline}
-            onClick={this.setRedirect}
-          />
-        </Link>
+        <div>
+          <Link to="/cart" className="btn btn-link my-2 my-sm-0">
+            <div className="counter">{this.props.counter}</div>
+            <Icon
+              className="shop"
+              icon={shoppingCartOutline}
+              onClick={this.setRedirect}
+            />
+          </Link>
+        </div>
         <div className="row">{mealCards}</div>
       </div>
     );
@@ -91,7 +115,8 @@ class MealsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    meals: state.mealReducer.meals
+    meals: state.mealReducer.meals,
+    counter: state.mealReducer.counter
   };
 };
 
