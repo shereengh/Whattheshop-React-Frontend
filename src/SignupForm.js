@@ -35,9 +35,7 @@ class Signup extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect);
-    {
-      return <Redirect to="/meals" />;
-    }
+    return <Redirect to="/home" />;
   };
 
   render() {
